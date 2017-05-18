@@ -7,16 +7,17 @@
 
 - For Windows users
 
-Download Sublime Text Editor - Link [here](https://www.sublimetext.com/3)
+ Download Sublime Text Editor - Link [here](https://www.sublimetext.com/3)
+ 
+ Download the Erlang Shell - Link [here](https://www.erlang.org/downloads)
 
-Download the Erlang Shell - Link [here](https://www.erlang.org/downloads)
+- For Ubuntu-Linux Users
 
-- For Ubuntu Linux Users
 Type the following command
 
 ```sudo apt-get install erlang```
 
-Sublime Text Editor would be a good choice - Link [here](https://www.sublimetext.com/3)
+ Sublime Text Editor would be a good choice - Link [here](https://www.sublimetext.com/3)
 
 
 ### References
