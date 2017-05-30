@@ -35,7 +35,32 @@
     </tr>
     <tr>
       <td>50</td>
-      <td>Took a lot of time(Forced stopped)</td>
+      <td>>1 minute</td>
       <td>9</td>
+    </tr>
+    <tr>
+    <td>10<sup>2</sup></td>
+      <td>-</td>
+      <td>55</td>
+    </tr>
+    <tr>
+    <td>10<sup>3</sup></td>
+      <td>-</td>
+      <td>485</td>
+    </tr>
+    <tr>
+    <td>10<sup>4</sup></td>
+      <td>-</td>
+      <td>11408</td>
+    </tr>
+    <tr>
+    <td>10<sup>5</sup></td>
+      <td>-</td>
+      <td>3821925 = 0.0636 s</td>
+    </tr>
+    <tr>
+    <td>10<sup>6</sup></td>
+    <td>-</td>
+    <td>TLE</td>
     </tr>
 </table>
