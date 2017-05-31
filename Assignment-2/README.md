@@ -4,10 +4,44 @@
 ```
 timer:tc(file_name, function_name, input).
 ```
-- To generate random lists of varying sizes, following has been used:-
+- To generate random lists of varying sizes where numbers are in range 1-100, following has been used:-
 ```
 [rand:uniform(100) || _ <- lists:seq(1,size)].
 ```
+### Some new terms used
+<table>
+  <tr>
+  <td>Terms</td>
+    <td>Function</td>
+    <td>Example</td>
+  </tr>
+  <tr>
+    <td>lists:max</td>
+    <td>Returns maximum number in the list</td>
+    <td>lists:max([1,4,6,3])  ->  6</td>
+  </tr>
+  <tr>
+    <td>lists:delete</td>
+    <td>Deletes the specified number from the specified list</td>
+    <td>lists:delete(6,[1,4,6,2])  ->  [1,4,2]</td>
+  </tr>
+  <tr>
+    <td>trunc</td>
+    <td>Returns an integer by truncating number</td>
+    <td>trunc(5.5)  ->  5</td>
+  </tr>
+  <tr>
+    <td>lists:split</td>
+    <td>Splits the lists into 2 at the desired position</td>
+    <td>lists:split(2,[1,2,3,4,5])  ->  {[1,2],[3,4,5]}</td>
+  </tr>
+  <tr>
+    <td>lists:foldl</td>
+    <td>Takes successive elements from the list and performs the called action</td>
+    <td>lists:foldl(fun(X, Sum) -> X + Sum end, 0, [1,2,3,4,5])  -> 15</td>
+  </tr>
+</table>
+
 
 ## Fibonacci Series
 
