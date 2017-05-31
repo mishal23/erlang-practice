@@ -157,16 +157,16 @@ timer:tc(file_name, function_name, input).
     </tr>
     <tr>
       <td>10<sup>5</sup></td>
-      <td>4.28 <b>min</b></td>
+      <td><b>TLE</b>(4.28 <b>min</b>)</td>
       <td>854307</td>
       <td>0.89 <b>min</b></td>
-      <td>1.579 <b>min</b></td>
+      <td><b>TLE</b>(1.579 <b>min</b>)</td>
       <td>96016</td>
     </tr>
     <tr>
       <td>10<sup>6</sup></td>
       <td><b>TLE</b></td>
-      <td>1.4 <b>min</b></td>
+      <td><b>TLE</b>(1.4 <b>min</b>)</td>
       <td><b>TLE</b></td>
       <td><b>TLE</b></td>
       <td>1110664</td>
