@@ -1,12 +1,17 @@
 -module (assignment4).
--export ([two/3,three_a/2,three_b/2,three_c/2,four_a/1,four_b/1,four_c/2,four_d/2,five_a/1,five_b/1,six_a/1,six_b/1,eight/1,ten/2,solve/2]).
+-export ([for/4,two/3,three_a/2,three_b/2,three_c/2,four_a/1,four_b/1,four_c/2,four_d/2,five_a/1,five_b/1,six_a/1,six_b/1,qsort/1,filterl/2,eight/1,nine_a/2,nine_b/1,takewhile_a/3,takewhile_b/4,ten/2,solve/2]).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%% Question 1  %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
+for(I,Pred,Update,Body) ->
+	case Pred(I) of
+		true ->
+			Body(I),
+			for(I,Pred,Update,Body);
+		false ->
+			ok
+	end.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%% Question 2  %%%%%%%%%%%%%%%%%%%%%%%
@@ -73,6 +78,11 @@ six_b(L) -> lists:foldr(fun(A, Newlist) -> case (lists:last(Newlist) =:=A) of tr
 %%%%%%%%%%%%%%%%%% Question 7  %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+filterl(Function,List) -> lists:foldl(fun(A,Newlist)-> case Function(A) of true -> Newlist++[A]; false -> Newlist end end,[],List).
+
+qsort([])->[];
+qsort([Pivot|Rest]) -> qsort(filterl(fun(X)->X=<Pivot end,Rest))++[Pivot]++qsort(filterl(fun(X)->X>Pivot end,Rest)).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%% Question 8  %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,8 +94,34 @@ eight(L) -> lists:foldl(fun(A,Newlist) -> case A/=2 of true -> Newlist++[A*A];fa
 %%%%%%%%%%%%%%%%%% Question 9  %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Enter minimum value where you want the list to filter and the list
+nine_a(Min,L) -> takewhile_a(Min,L,[]).
+
+takewhile_a(Min,[],Newlist) -> Newlist;
+takewhile_a(Min,[H|T],Newlist) ->
+	case H=<Min of
+		true -> takewhile_a(Min,T,Newlist++[H]);
+		false -> Newlist
+	end.
+
+% Enter the value upto which you want the sum of square root
+nine_b(Min) -> takewhile_b(Min,lists:seq(1,500),[],0).
+
+takewhile_b(Min,[],Newlist,Count) -> Count;
+takewhile_b(Min,[H|T],Newlist,Count) ->
+	case ((lists:sum(Newlist) + math:sqrt(H)) =< Min) of
+		true -> takewhile_b(Min,T,Newlist++[math:sqrt(H)],Count+1);
+		false -> Count
+	end.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%% Question 10  %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-ten(L,MinSum) -> solve(lists:reverse(L),MinSum).
-solve(L,MinSum) -> lists:foldl(fun(A,Newlist) -> case (lists:sum(Newlist)>MinSum) of true -> Newlist++[A] end end,[],L).
+
+ten(L,MinSum) -> 
+	case lists:sum(L)<MinSum of 
+		true -> not_found;
+		false -> solve(lists:sort(L),MinSum)
+	end.
+
+solve(L,MinSum) -> lists:foldr(fun(A,Newlist) -> case (lists:sum(Newlist)<MinSum) of true -> Newlist++[A];false -> Newlist end end,[],L).
