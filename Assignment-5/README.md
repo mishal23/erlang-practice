@@ -1,6 +1,6 @@
 # ASSIGNMENT-5
 
-- Examples for classic higher order functions in curried functions :-
+### Examples for classic higher order functions in curried functions :-
 
 1) Using **foldl** curried function to find product of elements of List.
 ```
