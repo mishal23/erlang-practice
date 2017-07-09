@@ -35,5 +35,3 @@ integral(A,B,N,F,X,Ans) when ((X rem 2)==0) -> integral(A,B,N,F,X+1,Ans + (2*F(A
 %%%%%%%%%%%%%%%%%%%%%%%%  QUESTION 4  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 foldl(Function,Factor,List) -> lists:foldr(fun(X,Acc) -> Acc ++ [X] end,[],lists:foldr(Function,Factor,List)).
-
-%ans(Function,Factor,List) -> lists:foldr(Function,Factor,List).
