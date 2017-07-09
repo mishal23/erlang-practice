@@ -11,7 +11,7 @@
 ```
 2) Using **filter** curried function to generate new list of elements greater then 2.
 ```
-> Fb=assignment5:three_b(fun(A) -> A>2 end).
+> Fb=assignment5:three_b(fun(X) -> X>2 end).
 #Fun<assignment5.7.28601752>
 > Fb([1,2,3,4,6]).
 [3,4,6]
