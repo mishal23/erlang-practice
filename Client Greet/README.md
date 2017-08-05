@@ -5,7 +5,7 @@
 - The set holidays are Uttarayan, Christmas and New Year.
 
 ### Demo
-```
+```erlang
 1> greet:start().
 CLIENT GREET PROGRAM
 To know the date,type : date.
