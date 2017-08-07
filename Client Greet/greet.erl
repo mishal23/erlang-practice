@@ -1,16 +1,22 @@
 -module (greet).
 -export ([greet_time/0,time1/0,date1/0,greet_date/0,start/0,client/2,server/0,greet_all/0]).
 
+
+start() -> io:format("~nCLIENT GREET PROGRAM~nTo know the date,type : date.~nTo know the time,type : time.~nTo know both date and time type : both.~n"),
+	   {ok,Input} = io:read("type: "),
+	   Server_PID = spawn(greet, server, []),
+    	   spawn(greet, client, [Input,Server_PID]).
+
 %% Client Code %%
 client(Input,Server_PID) when Input==date -> Server_PID ! date,
-											io:format("<CLIENT>Server requested for Date~n");
+					     io:format("<CLIENT>Server requested for Date~n");
 client(Input,Server_PID) when Input==time -> Server_PID ! time,
-											io:format("<CLIENT>Server requested for Time~n");
+					     io:format("<CLIENT>Server requested for Time~n");
 client(Input,Server_PID) when Input==both -> Server_PID ! both,
-											io:format("<CLIENT>Server requested for Date & Time~n");
+					     io:format("<CLIENT>Server requested for Date & Time~n");
 
 client(Input,Server_PID) -> Server_PID ! Input,
-							io:format("<CLIENT>Input sent to server~n").
+			    io:format("<CLIENT>Input sent to server~n").
 
 
 %% Server Code %%
@@ -74,10 +80,3 @@ greet_date() -> [Hd|Td] = date1(),
 
 %% Function to greet user with Date & Time %%
 greet_all() -> greet_time(),greet_date().	  
-
-
-start() -> 
-		io:format("~nCLIENT GREET PROGRAM~nTo know the date,type : date.~nTo know the time,type : time.~nTo know both date and time type : both.~n"),
-		{ok,Input} = io:read("type: "),
-		Server_PID = spawn(greet, server, []),
-    	spawn(greet, client, [Input,Server_PID]).
